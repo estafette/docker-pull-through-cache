@@ -37,10 +37,10 @@ releases:
             scrape: false
           cpu:
             request: 250m
-            limit: 500m
+            limit: 1000m
           memory:
-            request: 256Mi
-            limit: 512Mi
+            request: 4096Mi
+            limit: 4096Mi
         request:
           timeout: 120s
           maxbodysize: 128M
