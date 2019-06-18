@@ -27,7 +27,7 @@ releases:
           tag: 2.7.1
         configs:
           inline:
-            config.yml |
+            config.yml: |
               proxy:
                 remoteurl: https://registry-1.docker.io
           mountpath: /etc/docker/registry
