@@ -35,6 +35,7 @@ releases:
             REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io
             REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /cache-volume
             REGISTRY_HTTP_DEBUG_ADDR: :5001
+            REGISTRY_HTTP_DEBUG_PROMETHEUS_ENABLED: true
           liveness:
             path: /
           readiness:
