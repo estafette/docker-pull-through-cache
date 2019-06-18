@@ -29,6 +29,7 @@ releases:
           tag: 2.7.1
           env:
             REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io
+            REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /cache-volume
           liveness:
             path: /
           readiness:
@@ -46,6 +47,11 @@ releases:
           maxbodysize: 128M
           clientbodybuffersize: 1m
           proxybuffersnumber: 64
+        volumemounts:
+        - name: cache-volume
+          mountpath: /cache-volume
+          volume:
+            emptyDir: {}
         hosts:
         - estafette.secret(ec7-YB_A3z3_ji_i.HrhD2blaZayisApp5GQP0b09VMo7WE0hLjO-wzl4cA3Ta31I5TUhce38CWmAmHi6VN-p2ka1r1KxYwe5)
         internalhosts:
