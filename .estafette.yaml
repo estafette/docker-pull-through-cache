@@ -1,0 +1,37 @@
+builder:
+  track: dev
+
+labels:
+  app-group: estafette-ci
+  team: estafette-team
+
+version:
+  semver:
+    major: 0
+    minor: 0
+
+stages:
+  build:
+    image: alpine
+    commands:
+    - echo "nothing to build here, move along..."
+
+releases:
+  tooling:
+    stages:
+      deploy:
+        image: extensions/gke:dev
+        container:
+          repository: library
+          name: registry
+          tag: 2.7.1
+        configs:
+          inline:
+            config.yml |
+              proxy:
+                remoteurl: https://registry-1.docker.io
+          mountpath: /etc/docker/registry
+        hosts:
+        - estafette.secret(ec7-YB_A3z3_ji_i.HrhD2blaZayisApp5GQP0b09VMo7WE0hLjO-wzl4cA3Ta31I5TUhce38CWmAmHi6VN-p2ka1r1KxYwe5)
+        internalhosts:
+        - estafette.secret(yECTVElecBIrSJ0C.fWucNrbHJS2E9rfmLddw_I_Sc7-bqs3TfWR4-VeZDSkw0uLRewL18OrmTB02mQ4N5_HZ1YQxA0UUCfPBCIZGN-7MGoo=)
