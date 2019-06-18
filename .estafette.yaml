@@ -12,7 +12,7 @@ version:
 
 stages:
   build:
-    image: alpine
+    image: alpine:3.9
     commands:
     - echo "nothing to build here, move along..."
 
@@ -21,16 +21,31 @@ releases:
     stages:
       deploy:
         image: extensions/gke:dev
+        namespace: estafette
         container:
+          port: 5000
           repository: library
           name: registry
           tag: 2.7.1
-        configs:
-          inline:
-            config.yml: |
-              proxy:
-                remoteurl: https://registry-1.docker.io
-          mountpath: /etc/docker/registry
+          env:
+            REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io
+          liveness:
+            path: /
+          readiness:
+            path: /
+          metrics:
+            scrape: false
+          cpu:
+            request: 250m
+            limit: 500m
+          memory:
+            request: 256Mi
+            limit: 512Mi
+        request:
+          timeout: 120s
+          maxbodysize: 128M
+          clientbodybuffersize: 1m
+          proxybuffersnumber: 64
         hosts:
         - estafette.secret(ec7-YB_A3z3_ji_i.HrhD2blaZayisApp5GQP0b09VMo7WE0hLjO-wzl4cA3Ta31I5TUhce38CWmAmHi6VN-p2ka1r1KxYwe5)
         internalhosts:
