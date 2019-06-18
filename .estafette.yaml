@@ -42,6 +42,14 @@ releases:
           memory:
             request: 4096Mi
             limit: 4096Mi
+        sidecars:
+        - type: openresty
+          cpu:
+            request: 100m
+            limit: 200m
+          memory:
+            request: 200Mi
+            limit: 200Mi
         request:
           timeout: 120s
           maxbodysize: 128M
