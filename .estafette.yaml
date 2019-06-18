@@ -18,6 +18,10 @@ stages:
 
 releases:
   tooling:
+    actions:
+    - name: deploy-canary
+    - name: deploy-stable
+    - name: rollback-canary
     stages:
       deploy:
         image: extensions/gke:dev
@@ -30,12 +34,14 @@ releases:
           env:
             REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io
             REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /cache-volume
+            REGISTRY_HTTP_DEBUG_ADDR: localhost:5003
           liveness:
             path: /
           readiness:
             path: /
           metrics:
-            scrape: false
+            path: /metrics
+            port: 5003
           cpu:
             request: 250m
             limit: 1000m
