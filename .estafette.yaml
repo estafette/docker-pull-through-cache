@@ -61,7 +61,7 @@ releases:
           image: estafette/estafette-docker-cache-heater:dev
           env:
             MTU: 1460
-            MIRROR: http://localhost:5001
+            MIRROR: http://localhost:5000
           cpu:
             request: 100m
             limit: 200m
