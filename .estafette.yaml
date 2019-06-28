@@ -68,6 +68,8 @@ releases:
           memory:
             request: 200Mi
             limit: 200Mi
+          securityContext:
+            privileged: true
         request:
           timeout: 120s
           maxbodysize: 128M
