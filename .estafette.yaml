@@ -57,11 +57,58 @@ releases:
           memory:
             request: 200Mi
             limit: 200Mi
+        - type: heater
+          image: estafette/estafette-docker-cache-heater:dev
+          env:
+            MTU: 1460
+            MIRROR: http://localhost:5001
+          cpu:
+            request: 100m
+            limit: 200m
+          memory:
+            request: 200Mi
+            limit: 200Mi
         request:
           timeout: 120s
           maxbodysize: 128M
           clientbodybuffersize: 1m
           proxybuffersnumber: 64
+        configs:
+          inline:
+            container-list.yaml: |
+              containers:
+              - extensions/prefetch:dev
+              - extensions/prefetch:beta
+              - extensions/prefetch:stable
+
+              - extensions/envvars:dev
+              - extensions/envvars:beta
+              - extensions/envvars:stable
+
+              - extensions/git-clone:dev
+              - extensions/git-clone:beta
+              - extensions/git-clone:stable
+
+              - extensions/docker:dev
+              - extensions/docker:beta
+              - extensions/docker:stable
+
+              - extensions/gke:dev
+              - extensions/gke:beta
+              - extensions/gke:stable
+
+              - extensions/github-status:dev
+              - extensions/github-status:beta
+              - extensions/github-status:stable
+
+              - extensions/bitbucket-status:dev
+              - extensions/bitbucket-status:beta
+              - extensions/bitbucket-status:stable
+
+              - extensions/slack-build-status:dev
+              - extensions/slack-build-status:beta
+              - extensions/slack-build-status:stable
+
         volumemounts:
         - name: cache-volume
           mountpath: /cache-volume
