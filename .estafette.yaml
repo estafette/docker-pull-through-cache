@@ -106,6 +106,9 @@ releases:
               - extensions/bitbucket-status:stable
               - extensions/slack-build-status:stable
 
+              - golang:1.12.5-alpine3.9
+              - golang:1.12.6-alpine3.10
+
         volumemounts:
         - name: cache-volume
           mountpath: /cache-volume
