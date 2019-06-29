@@ -80,35 +80,30 @@ releases:
             container-list.yaml: |
               containers:
               - extensions/prefetch:dev
-              - extensions/prefetch:beta
-              - extensions/prefetch:stable
-
               - extensions/envvars:dev
-              - extensions/envvars:beta
-              - extensions/envvars:stable
-
               - extensions/git-clone:dev
-              - extensions/git-clone:beta
-              - extensions/git-clone:stable
-
               - extensions/docker:dev
-              - extensions/docker:beta
-              - extensions/docker:stable
-
               - extensions/gke:dev
-              - extensions/gke:beta
-              - extensions/gke:stable
-
               - extensions/github-status:dev
-              - extensions/github-status:beta
-              - extensions/github-status:stable
-
               - extensions/bitbucket-status:dev
-              - extensions/bitbucket-status:beta
-              - extensions/bitbucket-status:stable
-
               - extensions/slack-build-status:dev
+
+              - extensions/prefetch:beta
+              - extensions/envvars:beta
+              - extensions/git-clone:beta
+              - extensions/docker:beta
+              - extensions/gke:beta
+              - extensions/github-status:beta
+              - extensions/bitbucket-status:beta
               - extensions/slack-build-status:beta
+
+              - extensions/prefetch:stable
+              - extensions/envvars:stable
+              - extensions/git-clone:stable
+              - extensions/docker:stable
+              - extensions/gke:stable
+              - extensions/github-status:stable
+              - extensions/bitbucket-status:stable
               - extensions/slack-build-status:stable
 
         volumemounts:
