@@ -51,6 +51,8 @@ releases:
             limit: 4096Mi
         sidecars:
         - type: openresty
+          env:
+            PROXY_BUFFERING: 'off'
           cpu:
             request: 100m
             limit: 200m
