@@ -90,6 +90,8 @@ releases:
               - extensions/github-status:dev
               - extensions/bitbucket-status:dev
               - extensions/slack-build-status:dev
+              - extensions/npm-audit:dev
+              - estafette/cloud-sdk:dev
 
               - extensions/prefetch:beta
               - extensions/envvars:beta
@@ -99,6 +101,8 @@ releases:
               - extensions/github-status:beta
               - extensions/bitbucket-status:beta
               - extensions/slack-build-status:beta
+              - extensions/npm-audit:beta
+              - estafette/cloud-sdk:beta
 
               - extensions/prefetch:stable
               - extensions/envvars:stable
@@ -108,9 +112,15 @@ releases:
               - extensions/github-status:stable
               - extensions/bitbucket-status:stable
               - extensions/slack-build-status:stable
+              - extensions/npm-audit:stable
+              - estafette/cloud-sdk:stable
 
               - golang:1.12.5-alpine3.9
               - golang:1.12.6-alpine3.10
+
+              - extensions/dotnet:2.2-stable
+              - travix/npm-agent:dubnium-alpine
+              - node:dubnium-alpine
 
         volumemounts:
         - name: cache-volume
