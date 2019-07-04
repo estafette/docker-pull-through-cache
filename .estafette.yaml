@@ -18,13 +18,15 @@ stages:
 
 releases:
   tooling:
-    actions:
-    - name: deploy-canary
-    - name: deploy-stable
-    - name: rollback-canary
     stages:
       deploy:
         image: extensions/gke:dev
+        kind: statefulset
+        replicas: 3
+        podManagementpolicy: Parallel
+        storageclass: fast
+        storagesize: 10Gi
+        storagemountpath: /cache-volume
         namespace: estafette
         container:
           port: 5000
@@ -122,11 +124,6 @@ releases:
               - travix/npm-agent:dubnium-alpine
               - node:dubnium-alpine
 
-        volumemounts:
-        - name: cache-volume
-          mountpath: /cache-volume
-          volume:
-            emptyDir: {}
         hosts:
         - estafette.secret(ec7-YB_A3z3_ji_i.HrhD2blaZayisApp5GQP0b09VMo7WE0hLjO-wzl4cA3Ta31I5TUhce38CWmAmHi6VN-p2ka1r1KxYwe5)
         internalhosts:
