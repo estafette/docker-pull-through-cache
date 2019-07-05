@@ -50,7 +50,7 @@ releases:
             port: 5001
           cpu:
             request: 250m
-            limit: 1000m
+            limit: 2000m
           memory:
             request: 4096Mi
             limit: 4096Mi
@@ -71,10 +71,10 @@ releases:
             MIRROR: http://localhost:5000
           cpu:
             request: 200m
-            limit: 200m
+            limit: 500m
           memory:
             request: 200Mi
-            limit: 200Mi
+            limit: 500Mi
           securityContext:
             privileged: true
         request:
