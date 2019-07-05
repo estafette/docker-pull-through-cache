@@ -36,6 +36,8 @@ releases:
           env:
             REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io
             REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /cache-volume
+            REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR: inmemory
+            REGISTRY_STORAGE_REDIRECT_DISABLE: true
             REGISTRY_STORAGE_DELETE_ENABLED: true
             REGISTRY_HTTP_DEBUG_ADDR: :5001
             REGISTRY_HTTP_DEBUG_PROMETHEUS_ENABLED: true
