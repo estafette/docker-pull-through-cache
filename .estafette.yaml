@@ -70,6 +70,7 @@ releases:
           env:
             MTU: 1460
             MIRROR: http://localhost:5000
+            REGISTRY_HEALTH_ENDPOINT: http://localhost:5001/debug/health
           cpu:
             request: 200m
             limit: 500m
