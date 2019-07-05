@@ -68,6 +68,7 @@ releases:
         - type: heater
           image: estafette/estafette-docker-cache-heater:dev
           env:
+            DEBUG: true
             MTU: 1460
             MIRROR: http://localhost:5000
             REGISTRY_HEALTH_ENDPOINT: http://localhost:5001/debug/health
