@@ -45,8 +45,7 @@ releases:
           liveness:
             path: /
           readiness:
-            path: /debug/health
-            port: 5001
+            path: /
           metrics:
             path: /metrics
             port: 5001
