@@ -50,18 +50,29 @@ releases:
             path: /metrics
             port: 5001
           cpu:
-            request: 250m
+            request: 1000m
             limit: 2000m
           memory:
             request: 4096Mi
             limit: 4096Mi
+        initcontainers:
+        - name: sysctl
+          image: busybox:1.31.0
+          imagePullPolicy: IfNotPresent
+          command:
+          - sh
+          - -c
+          - sysctl -w net.core.somaxconn=32768; sysctl -w net.ipv4.ip_local_port_range="1024 65535"
+          securityContext:
+            privileged: true
         sidecars:
         - type: openresty
           env:
-            PROXY_BUFFERING: 'off'
+            WORKER_PROCESSES: 2
+            WORKER_CONNECTIONS: 16384
           cpu:
-            request: 100m
-            limit: 200m
+            request: 2000m
+            limit: 3000m
           memory:
             request: 200Mi
             limit: 200Mi
